@@ -1,0 +1,36 @@
+name: CI - Cypress - Módulo 15
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+    
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: 'npm'
+    - name: Instalar Dependências
+      run: npm install
+
+    - name: Executar Testes Cypress
+      run: npm test
+
+    - name: Gerar Relatório Allure
+      run: npm run report:generate
+
+    - name: Publicar Relatório Allure
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure-report
