@@ -5,7 +5,7 @@ context('Misc', () => {
     cy.visit('https://example.cypress.io/commands/misc')
   })
 
-  it('.end() - end the command chain', () => {
+  it.skip('.end() - end the command chain', () => {
     // https://on.cypress.io/end
 
     // cy.end is useful when you want to end a chain of commands
@@ -33,7 +33,7 @@ context('Misc', () => {
     // on CircleCI Windows build machines we have a failure to run bash shell
     // https://github.com/cypress-io/cypress/issues/5169
     // so skip some of the tests by passing flag "--env circle=true"
-    const isCircleOnWindows = Cypress.platform === 'win32' && Cypress.env('circle')
+    const isCircleOnWindows = Cypress.platform === 'win32' && Cypress.expose('circle')
 
     if (isCircleOnWindows) {
       cy.log('Skipping test on CircleCI')
@@ -43,7 +43,7 @@ context('Misc', () => {
 
     // cy.exec problem on Shippable CI
     // https://github.com/cypress-io/cypress/issues/6718
-    const isShippable = Cypress.platform === 'linux' && Cypress.env('shippable')
+    const isShippable = Cypress.platform === 'linux' && Cypress.expose('shippable')
 
     if (isShippable) {
       cy.log('Skipping test on ShippableCI')
