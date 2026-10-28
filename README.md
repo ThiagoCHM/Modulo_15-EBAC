@@ -14,7 +14,7 @@ Antes de começar, certifique-se de ter instalado:
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/EBAC-QE/ebac-cypress-samples.git
+git clone https://github.com/ThiagoCHM/Modulo_15-EBAC
 ```
 
 ### 2. Entrar na pasta do projeto
