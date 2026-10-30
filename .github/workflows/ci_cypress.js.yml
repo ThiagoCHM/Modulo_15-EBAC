@@ -27,9 +27,11 @@ jobs:
       run: npm test
 
     - name: Gerar Relatório Allure
+      if: always()
       run: npm run report:generate
 
     - name: Publicar Relatório Allure
+      if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
